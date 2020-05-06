@@ -1,0 +1,36 @@
+name: Driver Tests
+
+on: [push]
+
+jobs:
+  drive_android:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        api-level: [21, 29]
+        target: [default]
+#        device:
+##          - "iPhone 8 (13.1)"
+#          - "iPhone 11 Pro Max (13.4.1)"
+
+      fail-fast: true
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'beta'
+    - name: run test ${{ matrix.flavor }}
+      run: "flutter drive --target=test_driver/app.dart"
+    - name: Run Flutter Driver tests
+      #GitHub Action for installing, configuring and running Android Emulators (work only Mac OS)
+      #https://github.com/ReactiveCircus/android-emulator-runner
+      uses: reactivecircus/android-emulator-runner@v1
+      with:
+        api-level: ${{ matrix.api-level }}
+        target: ${{ matrix.target }}
+        arch: x86_64
+        profile: Nexus 6
+        script: flutter drive --target=test_driver/app.dart
