@@ -1,4 +1,4 @@
-name: Driver Tests
+name: Driver Tests iOS
 
 on: [push]
 
@@ -11,6 +11,8 @@ jobs:
       matrix:
         device:
 #          - "iPhone 8 (13.1)"
+          - "iPhone 8 Plus (13.4.1)"
+          - "iPhone 11 (13.4.1)"
           - "iPhone 11 Pro Max (13.4.1)"
 
       fail-fast: true
