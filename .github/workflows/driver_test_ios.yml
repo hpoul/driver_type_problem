@@ -15,7 +15,7 @@ jobs:
           - "iPhone 11 (13.4.1)"
           - "iPhone 11 Pro Max (13.4.1)"
 
-      fail-fast: true
+      fail-fast: false
 
     steps:
     - uses: actions/checkout@v2
