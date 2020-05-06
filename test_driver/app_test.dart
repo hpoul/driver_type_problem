@@ -20,9 +20,10 @@ void main() {
 
     test('Enter value', () async {
       final testValue = 'Loerm Ipsum';
-      await Future.delayed(const Duration(seconds: 2));
+//      await Future.delayed(const Duration(seconds: 2));
       await driver.tap(find.text('Click Me'));
-      await Future.delayed(const Duration(seconds: 2));
+//      await Future.delayed(const Duration(seconds: 2));
+      await driver.waitUntilNoTransientCallbacks();
       await driver.enterText(testValue);
       await driver.tap(find.text('Ok'));
       final result = await driver.getText(find.byValueKey('result'));
